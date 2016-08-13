@@ -3,10 +3,20 @@ import itertools
 
 
 def main():
-    print encrypt_caesar('BASS', 'B')
-    print decrypt_caesar('CBTT', 'B')
-    print encrypt_vingenere("ATTACKATDAWN", "LEMON")
-    print decrypt_vingenere('LXFOPVEFRNHR', 'LEMON')
+    action = raw_input("Would you like to encrypt or decrypt? (e/d) ")
+    if action == "d":
+        text = raw_input("Please enter the string to decrypt : ").upper()
+        key = raw_input("Please enter the key : ").upper()
+        print decrypt_vingenere(text, key)
+    if action == "e":
+        text = raw_input("Please enter the string to encrypt : ").upper()
+        key = raw_input("Please enter the key : ").upper()
+        print encrypt_vingenere(text, key)
+
+    #print encrypt_caesar('BASS', 'B')
+    #print decrypt_caesar('CBTT', 'B')
+    #print encrypt_vingenere("ATTACKATDAWN", "LEMON")
+    #print decrypt_vingenere('LXFOPVEFRNHR', 'LEMON')
 
 
 def decrypt_vingenere(text, key):
