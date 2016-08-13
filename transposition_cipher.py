@@ -22,26 +22,23 @@ def encrypt(text, key):
 
 def decrypt(text,key):
 
-    decrypted_str = ""
-    key_opp = (len(text) / key) + 1
-    rows = (len(text) / key)
-    if (rows % key) != 0: rows = rows + 1
-    #decrypted = [""] * rows
+    key = float(key)
+    columns = int(math.ceil(len(text) / key))
+    rows = int(key)
+    blanks = (columns*rows) - len(text)
+    decrypted = ['']*columns
 
-    blanks = (rows*key) - len(text)
-    text_length = len(text) + 1
+    col = 0
+    row = 0
 
-    for i in range(key_opp):
-        blank_range = 0
-        for number,j in enumerate(range(i,text_length,rows)):
-            if len(decrypted_str) == len(text):
-                return decrypted_str
-            if blanks is not 0 and number > key - blanks:
-                j -= 1
-            decrypted_str += text[j]
+    for letter in text:
+        decrypted[col] += letter
+        col += 1
 
-    return decrypted_str
-
+        if (col == columns) or ((col == columns - 1) and (row >= rows - blanks)):
+            col = 0
+            row += 1
+    return ''.join(decrypted)
 
 if __name__ == "__main__":
     main()
