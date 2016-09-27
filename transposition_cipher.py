@@ -3,6 +3,7 @@ import math
 
 def main():
 
+    dictionary = load_dict()
     key = 8
     text = "Common sense is not so common."
     # should be Cenoonommstmme oo snnio. s s c
@@ -39,6 +40,12 @@ def decrypt(text,key):
             col = 0
             row += 1
     return ''.join(decrypted)
+
+
+def load_dict():
+    dictionary = open("/usr/share/dict/words").read()
+    words = dictionary.split("\n")
+    #print words[0]
 
 if __name__ == "__main__":
     main()
